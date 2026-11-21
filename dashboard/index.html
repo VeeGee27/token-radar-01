@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Launch Radar — pre-token protocols ranked by fitted implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-title">
+    <h1>LAUNCH RADAR</h1>
+    <p class="tagline">Pre-token protocols, ranked by fitted implied value — and what to do about each one.</p>
+  </div>
+  <div class="masthead-meta">
+    <div>Snapshot <strong id="as-of">—</strong></div>
+    <div>Source <strong>DefiLlama protocols</strong></div>
+    <div>Board <strong>200 rows</strong></div>
+  </div>
+</header>
+
+<section class="kpis" id="kpis" aria-label="Key figures"></section>
+
+<main>
+  <section class="panel" id="method" aria-label="How the value is fitted">
+    <h2>How the value is fitted</h2>
+    <p class="method-formula" id="method-formula">Loading the model…</p>
+    <div class="method-grid">
+      <div>
+        <h3>The comps curve</h3>
+        <p id="method-comps">Loading…</p>
+      </div>
+      <div>
+        <h3>Held-out tests</h3>
+        <p id="method-tests">Loading…</p>
+      </div>
+      <div>
+        <h3>What it cannot do</h3>
+        <p>TVL explains about a fifth of market-cap variance across the comps. The implied
+        value is this radar's claim about what a token would be worth if the protocol's
+        record stayed as it is — not a prediction that a token is issued, or when. A
+        protocol the snapshot records no token for may still have one its record does not
+        carry. Read the farm plan, not the rank alone.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="controls" aria-label="Board controls">
+    <input id="q" type="search" placeholder="Search name or slug…" aria-label="Search protocols">
+    <select id="f-cat" aria-label="Filter by category"><option value="">All categories</option></select>
+    <select id="f-chain" aria-label="Filter by chain"><option value="">All chains</option></select>
+    <select id="f-status" aria-label="Filter by status">
+      <option value="">Watchlist + early</option>
+      <option value="watchlist">Watchlist only</option>
+      <option value="early">Early (below the floor) only</option>
+    </select>
+    <select id="f-sort" aria-label="Sort the board">
+      <option value="value">Sort: implied value</option>
+      <option value="tvl">Sort: TVL</option>
+      <option value="growth">Sort: 7-day change</option>
+      <option value="age">Sort: days listed</option>
+      <option value="name">Sort: name A–Z</option>
+    </select>
+    <span class="count" id="count"></span>
+  </section>
+
+  <section class="panel board-panel" aria-label="Ranked board">
+    <table class="board" id="board">
+      <thead>
+        <tr>
+          <th class="num">#</th>
+          <th>Protocol</th>
+          <th>Category</th>
+          <th>Chains</th>
+          <th class="num">TVL</th>
+          <th class="num">7d</th>
+          <th class="num">Age</th>
+          <th class="num">Implied value</th>
+          <th class="num">Farm deposit</th>
+        </tr>
+      </thead>
+      <tbody id="board-body"></tbody>
+    </table>
+    <p class="board-note">Click any row for the protocol's detail view: its figures, the model's
+    terms, and its costed farm plan. Rank is the model's claim; the table sorts as you ask.</p>
+  </section>
+
+  <section class="panel detail" id="detail" hidden aria-label="Protocol detail">
+    <div class="detail-head">
+      <div>
+        <h2 id="detail-name">—</h2>
+        <p class="detail-sub" id="detail-sub">—</p>
+      </div>
+      <button id="detail-close" type="button">Close ✕</button>
+    </div>
+    <div class="detail-grid" id="detail-figures"></div>
+    <h3>How its implied value is built</h3>
+    <div class="terms" id="detail-terms"></div>
+    <h3>Farm plan — what it costs and how long it takes</h3>
+    <ol class="steps" id="detail-steps"></ol>
+  </section>
+</main>
+
+<footer>
+  <p>Data: DefiLlama public API, fetched once and sealed in the snapshot; every run of this
+  program reads the same bytes. Implied values are this entry's own claim, never make.fun's,
+  and never a promise that a token launches.</p>
+</footer>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
